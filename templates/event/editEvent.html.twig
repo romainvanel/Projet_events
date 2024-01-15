@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edition : {{ event.name }}{% endblock %}
+
+{% block body %}
+
+    {% for messageFlash in app.flashes('success') %}
+        <div class="alert alert-success mt-3">
+            {{ messageFlash }}
+        </div>
+    {% endfor %}
+
+    <h1 class="my-3 text-center fw-bold">Edition d'évènement</h1>
+
+    <div class="w-50 m-auto">
+        {{ form(formEditEvent) }}
+    </div>
+
+    <div class="d-flex justify-content-end">
+        <a href="{{ path('app_events') }}" class="btn btn-danger">Retour à la liste des évènements</a>
+    </div>
+
+
+{% endblock %}

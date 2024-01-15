@@ -1,3 +1,11 @@
-body {
-    background-color: skyblue;
+nav {
+    background-color: brown;
+}
+
+.cardList {
+    height: 30rem;
+}
+
+.card-body p {
+    text-align: justify;
 }

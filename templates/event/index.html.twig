@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des events{% endblock %}
+
+{% block body %}
+
+    {% for messageFlash in app.flashes('success') %}
+        <div class="alert alert-success mt-3">
+            {{ messageFlash }}
+        </div>
+    {% endfor %}
+
+    <h1 class="my-3 text-center fw-bold">Evenement à venir</h1>
+
+    <div class="d-flex justify-content-end mb-3">
+        <a href="{{ path('app_question_add') }}" class="btn btn-danger">Ajouter un évènement</a>
+    </div>
+
+    <div class="row">
+    {% for event in events %}
+        <div class="col-sm-3 mb-5">
+            <div class="card cardList text-center">
+                <div class="card-header">
+                    <h3>{{ event.name }}</h3>
+                </div>
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <p class="card-text">{{ event.description|slice(0, 300) }}...</p>
+                    <a href="{{ path('app_event', { id: event.id }) }}" class="fw-bold align-self-end btn btn-danger">Voir plus</a>
+                </div>
+                <div class="card-footer text-muted">
+                    <p class="mb-0">Date : <span class="fw-bold">{{ event.startDate|date('d.m.Y') }} - {{ event.endDate|date('d.m.Y') }}</span></p>
+                </div>
+
+            </div>
+        </div>
+    {% else %}
+        <p>Il n'y a aucun évènements pour le moement</p>
+    {% endfor %}
+    </div>
+
+{% endblock %}
